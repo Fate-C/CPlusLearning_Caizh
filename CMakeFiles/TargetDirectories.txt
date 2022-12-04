@@ -1,0 +1,3 @@
+/mnt/d/Programs/CPlusLearning_Caizh/CMakeFiles/demo.dir
+/mnt/d/Programs/CPlusLearning_Caizh/CMakeFiles/edit_cache.dir
+/mnt/d/Programs/CPlusLearning_Caizh/CMakeFiles/rebuild_cache.dir
