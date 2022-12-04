@@ -66,6 +66,55 @@ void Solution2Q799::solve()
 }
 
 
+void Solution2Q207::dfs(int courseNum)
+{
+    courseStatus[courseNum] = DISCOVERED; //开始访问当前节点
+    for(int nextCourse : edges[courseNum]) //对每一个边进行探寻
+    {
+        if(courseStatus[nextCourse] == UNDISCOVERED)
+        {
+            dfs(nextCourse);
+            if(!valid)
+            {
+                return;
+            }
+        }
+        else if(courseStatus[nextCourse] == DISCOVERED) //如果下一访问节点已经处于访问中状态，则说明形成环
+        {
+            valid = false;
+            return;
+        }
+    }
+    courseStatus[courseNum] = VISITED; //当前节点已结束访问
+}
+
+bool Solution2Q207::canFinish(int numCourses, std::vector<std::vector<int>>& prerequisites) {
+    edges.resize(numCourses);
+    courseStatus.resize(numCourses, UNDISCOVERED);
+
+    for(const auto& prereq : prerequisites)
+    {
+        edges[prereq[0]].emplace_back(prereq[1]);
+    }
+    for(int i = 0; i < numCourses; i++)
+    {
+        if(courseStatus[i] == UNDISCOVERED)
+        {
+            dfs(i);
+        }
+    }
+    return valid;
+}
+
+void Solution2Q207::solve()
+{
+    int numCourses = 2;
+    std::vector<std::vector<int>> prerequisites = {{1,0},{0,1}};
+    bool valid = canFinish(numCourses, prerequisites);
+    std::string ans = valid? "true" : "false";
+    std::cout << ans << std::endl;
+}
+
 //构造函数
 Student::Student(int cardId, std::string name, int score)
 {

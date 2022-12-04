@@ -23,6 +23,21 @@ private:
     int poured, query_row, query_glass;
 };
 
+
+typedef enum {UNDISCOVERED, DISCOVERED, VISITED} status; //在图中，每一门课有三个状态，未被访问、访问中、访问完
+
+class Solution2Q207
+{
+public:
+    void dfs(int courseNum);
+    bool canFinish(int numCourses, std::vector<std::vector<int>>& prerequisites);
+    void solve();
+private:
+    std::vector<std::vector<int>> edges;
+    std::vector<status> courseStatus;
+    bool valid = true;
+};
+
 class Student
 {
 public:

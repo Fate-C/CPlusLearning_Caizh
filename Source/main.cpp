@@ -29,21 +29,13 @@ int main()
 
     //testExprCalcu();
 
-    testNQueens();
+    //testNQueens();
 
     //testFileIO(); //测试文件IO
 
     //testException();
 
-    /* //测试递归计算乘方
-    int num = 0, order = 0;
-    std::cout << "Input the base number:\t";
-    std::cin >> num;
-    std::cout << "Input the power order:\t";
-    std::cin >> order;
     
-    std::cout << "The result is:\t" << pow(num, order) << std::endl; */
-
     //leetcode题目
     /*
     std::string targetOrder = "cbaeij";
@@ -54,6 +46,9 @@ int main()
 
     //Solution2Q799 solu(50, 15, 12);
     //solu.solve();
+
+    Solution2Q207 solu;
+    solu.solve();
 
     return 0;
 }
