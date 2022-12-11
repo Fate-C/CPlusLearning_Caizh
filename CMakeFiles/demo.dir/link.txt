@@ -1,1 +1,0 @@
-/usr/bin/c++     CMakeFiles/demo.dir/Source/main.cpp.o CMakeFiles/demo.dir/Source/LeetCodeSolution.cpp.o CMakeFiles/demo.dir/Source/mathFcn.cpp.o CMakeFiles/demo.dir/Source/testFcns.cpp.o CMakeFiles/demo.dir/Source/nQueen.cpp.o  -o demo 

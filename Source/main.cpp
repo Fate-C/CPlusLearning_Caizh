@@ -23,7 +23,7 @@ int main()
     //testConstructionAndDestruction();
     //testClassSuccess();
 
-    //testPolyExpand(); //测试多项式乘法
+    testPolyExpand(); //测试多项式乘法
 
     //testParenMatch();
 
@@ -47,8 +47,8 @@ int main()
     //Solution2Q799 solu(50, 15, 12);
     //solu.solve();
 
-    Solution2Q207 solu;
-    solu.solve();
+    //Solution2Q207 solu;
+    //solu.solve();
 
     return 0;
 }
