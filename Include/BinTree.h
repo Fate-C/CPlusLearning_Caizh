@@ -1,7 +1,7 @@
 #pragma once
 #include "BinNode.h"
 
-template<typename T> class BinTree
+template<typename T> class BinTree : public BinNode<T>
 {
 protected:
     int _size;

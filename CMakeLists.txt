@@ -19,6 +19,10 @@ add_executable(demo
     Source/nQueen.cpp
 )
 
+add_executable(BSTTest 
+    Source/BinTreeTest.cpp
+)
+
 # Hint: Be sure to specify the source file as tutorial.cxx
 
 # TODO 9: Use target_include_directories to include ${PROJECT_BINARY_DIR}
