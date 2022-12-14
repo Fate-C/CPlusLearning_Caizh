@@ -11,6 +11,7 @@ protected:
 public:
     BST();
     ~BST();
+    BinNodePosi(T) getRoot();
     BinNodePosi(T)& search(const T& val);
     BinNodePosi(T)& insert(const T& val);
     bool remove(const T& val);
@@ -65,6 +66,10 @@ template <typename T> BST<T>::~BST()
     std::cout << "BST Deleted!" << std::endl;
 }
 
+template <typename T> BinNodePosi(T) BST<T>::getRoot()
+{
+    return this->_root;
+}
 
 template <typename T> BinNodePosi(T)& BST<T>::search(const T& val)
 {

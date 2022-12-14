@@ -17,6 +17,8 @@ template <typename T> struct BinNode
     BinNodePosi(T) insertAsLC(T const& val);
     BinNodePosi(T) insertAsRC(T const& val);
 
+    template <typename VST> void traverIn(VST& visit);
+
     //比较器、判等器等
     bool operator< (BinNode const& bn) {return data < bn.data;}
     bool operator== (BinNode const& bn) {return data == bn.data;}
@@ -58,3 +60,5 @@ template <typename T> BinNodePosi(T) BinNode<T>::insertAsRC(T const& val)
 {
     return rightChild = new BinNode(val, this); //创建右节点，并将当前节点作为其父节点
 }
+
+
