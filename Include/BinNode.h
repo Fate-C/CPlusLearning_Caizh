@@ -17,7 +17,6 @@ template <typename T> struct BinNode
     BinNodePosi(T) insertAsLC(T const& val);
     BinNodePosi(T) insertAsRC(T const& val);
 
-    template <typename VST> void traverIn(VST& visit);
 
     //比较器、判等器等
     bool operator< (BinNode const& bn) {return data < bn.data;}

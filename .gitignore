@@ -11,3 +11,7 @@ compile_commands.json
 CTestTestfile.cmake
 _deps
 demo
+tempTest.h
+tempTest.cpp
+temp
+BSTTest
