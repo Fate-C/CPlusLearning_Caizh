@@ -8,13 +8,12 @@
 
 int main()
 {
-    std::vector<int> nums = {1, 2, 1, 3, 1, 2, 1, 2};
+    Entity a(1.2f, 2.4f);
+    Entity b(2.4f, 4.8f);
 
-    std::vector<int> subVec = {3, 1, 2};
-
-    auto it = KMP(nums, subVec, 0);
-
-    std::cout << it - nums.begin() << std::endl;
+    std::cout << a << std::endl;
+    std::cout << b << std::endl;
+    std::cout << a + b << std::endl;
 
     return 0;
 }
