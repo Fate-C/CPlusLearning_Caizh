@@ -17,10 +17,10 @@ void printClassName(const People& p)
     std::cout << p.getClassName() << std::endl;
 }
 
-class Student : public People
+class Worker : public People
 {
 public:
-    int studentId;
+    int workerId;
     int score;
 };
 

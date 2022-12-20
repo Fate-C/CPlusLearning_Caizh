@@ -1,8 +1,13 @@
 #pragma once
 #include "BinTree.h"
 
+/*
+Template classes and template functions declearation begin here
+*/
+
 template <typename T> static BinNodePosi(T) & searchIn(BinNodePosi(T)& v, const T& val, BinNodePosi(T)& hot);
 template <typename T> static BinNodePosi(T) removeAt(BinNodePosi(T)& x, BinNodePosi(T)& hot);
+template <typename T>void traverIn(BinNodePosi(T) root, std::vector<T>& vec);
 
 template <typename T> class BST : public BinTree<T>
 {
@@ -16,6 +21,10 @@ public:
     BinNodePosi(T)& insert(const T& val);
     bool remove(const T& val);
 };
+
+/*
+Template classes and template functions definition begin here
+*/
 
 template <typename T> static BinNodePosi(T) & searchIn(BinNodePosi(T)& v, const T& val, BinNodePosi(T)& hot)
 {
@@ -55,6 +64,18 @@ template <typename T> static BinNodePosi(T) removeAt(BinNodePosi(T)& x, BinNodeP
     release(w);
     return succ;
 }
+
+template <typename T>void traverIn(BinNodePosi(T) root, std::vector<T>& vec)
+{
+    if(root == nullptr)
+    {
+        return;
+    }
+    traverIn(root->leftChild, vec);
+    vec.emplace_back(root->data);
+    traverIn(root->rightChild, vec);
+}
+
 
 template <typename T> BST<T>::BST()
 {
@@ -96,7 +117,6 @@ template <typename T> bool BST<T>::remove(const T& val)
     this->_size--;
     return true;
 }
-
 
 
 

@@ -3,6 +3,9 @@
 #include <algorithm>
 #include <fstream>
 #include "mathFcn.h"
+#include "KMP.h"
+#include "BST.h"
+#include "tempTest.h"
 #include "testFcns.h"
 #include "LeetCodeSolution.h"
 
@@ -187,3 +190,35 @@ void testExprCalcu()
     printf("The RPN expression is:\t%s\n", RPN.c_str());
 }
 
+void testOperatorOverloading()
+{
+    Entity a(1.2f, 2.4f);
+    Entity b(2.4f, 4.8f);
+
+    std::cout << a << std::endl;
+    std::cout << b << std::endl;
+    std::cout << a + b << std::endl;
+}
+
+void testKMP()
+{
+    std::vector<int> vec = {1, 3, 5, 6, 9, 12, 2, 4, 8, 7, 20, 40, 28};
+
+    BST<int> bst;
+
+    for(auto num : vec)
+    {
+        bst.insert(num);
+    }
+
+    std::vector<int> TraverInVec;
+
+    traverIn(bst.getRoot(), TraverInVec);
+
+    for(int num : TraverInVec)
+    {
+        printf("%d\t", num);
+    }
+    printf("\n");
+
+}

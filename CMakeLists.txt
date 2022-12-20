@@ -17,16 +17,9 @@ add_executable(demo
     Source/mathFcn.cpp
     Source/testFcns.cpp
     Source/nQueen.cpp
-)
-
-add_executable(BSTTest 
-    Source/BinTreeTest.cpp
-)
-
-add_executable(temp
-    Source/tempTest.cpp
     Source/KMP.cpp
 )
+
 
 # Hint: Be sure to specify the source file as tutorial.cxx
 
