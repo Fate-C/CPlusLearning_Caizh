@@ -383,3 +383,27 @@ double evaluate(std::string::iterator &op, std::string &RPN)
     return opnd.top();
 }
 
+int maximumScore(int a, int b, int c)
+{
+    int maxHeap = std::max(std::max(a, b), c);
+    int minHeap = std::min(std::min(a, b), c);
+    int midHeap = (a + b + c) - maxHeap - minHeap;
+    int cntScore = 0;
+
+    if (maxHeap >= minHeap + midHeap)
+    { 
+        return minHeap + midHeap;
+    }
+    else if (minHeap < (maxHeap >> 1))
+    {
+        return maxHeap;
+    }
+    else
+    {
+        cntScore += maxHeap;
+        minHeap -= maxHeap >> 1;
+        midHeap -= (maxHeap >> 1) + (maxHeap & 1);
+
+        return cntScore + std::min(minHeap, midHeap);
+    }
+}

@@ -43,3 +43,4 @@ double calculate(double pOpnd1, char op);
 double calculate(double pOpnd1, char op, double pOpnd2);
 double evaluate(std::string::iterator &op, std::string &RPN);
 
+int maximumScore(int a, int b, int c);

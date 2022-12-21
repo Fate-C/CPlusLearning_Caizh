@@ -2,6 +2,7 @@
 #include <cstdio>
 #include <algorithm>
 #include <vector>
+#include "mathFcn.h"
 #include "LeetCodeSolution.h"
 
 Solution2Q791::Solution2Q791(std::string order, std::string s)
@@ -198,3 +199,12 @@ void ForeignStudent::printInfor()
     std::cout << "\tNation:" << nation << std::endl;
 }
 
+void testLeetCode()
+{
+    int a = 4;
+    int b = 4;
+    int c = 7;
+
+    int ans = maximumScore(a, b, c);
+
+}
