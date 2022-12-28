@@ -407,3 +407,16 @@ int maximumScore(int a, int b, int c)
         return cntScore + std::min(minHeap, midHeap);
     }
 }
+
+void PrintVal(int val)
+{
+    std::cout << "The value is: " << val << std::endl;
+}
+
+void ForEach(const std::vector<int>& values, void(*func)(int))
+{
+    for(int val : values)
+    {
+        func(val);
+    }
+}

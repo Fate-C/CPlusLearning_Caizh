@@ -44,3 +44,6 @@ double calculate(double pOpnd1, char op, double pOpnd2);
 double evaluate(std::string::iterator &op, std::string &RPN);
 
 int maximumScore(int a, int b, int c);
+
+void PrintVal(int val);
+void ForEach(const std::vector<int>& values, void(*func)(int));

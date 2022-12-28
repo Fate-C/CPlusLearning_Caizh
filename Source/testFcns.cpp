@@ -200,7 +200,7 @@ void testOperatorOverloading()
     std::cout << a + b << std::endl;
 }
 
-void testKMP()
+void testBST()
 {
     std::vector<int> vec = {1, 3, 5, 6, 9, 12, 2, 4, 8, 7, 20, 40, 28};
 
@@ -220,5 +220,19 @@ void testKMP()
         printf("%d\t", num);
     }
     printf("\n");
+
+}
+
+void testFcnPointer()
+{
+    std::vector<int> vec = {1, 3, 5, 6, 9, 12};
+
+    ForEach(vec, PrintVal);
+
+    std::cout << std::endl;
+
+    ForEach(vec, [](int val){
+        std::cout << "Lambda Fcn: The value is: " << val << std::endl;
+    });
 
 }

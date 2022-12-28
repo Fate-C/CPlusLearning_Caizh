@@ -12,5 +12,5 @@ CTestTestfile.cmake
 _deps
 demo
 temp
-BSTTest
+tempTest.cpp
 build

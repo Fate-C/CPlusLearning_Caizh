@@ -20,6 +20,9 @@ add_executable(demo
     Source/KMP.cpp
 )
 
+add_executable(test
+    Source/tempTest.cpp
+)
 
 # Hint: Be sure to specify the source file as tutorial.cxx
 

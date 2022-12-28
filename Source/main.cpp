@@ -10,7 +10,7 @@
 int main()
 {
 
-    testLeetCode();
+    testFcnPointer();
 
     return 0;
 }
