@@ -28,3 +28,5 @@ void testOperatorOverloading();         //用来测试运算符重载，<< 运�
 void testBST();                         //用来测试BST树
 
 void testFcnPointer();                  //用来测试函数指针
+
+void testMultiThread();                 //用来初步测试多线程

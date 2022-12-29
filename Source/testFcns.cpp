@@ -2,6 +2,7 @@
 #include <vector>
 #include <algorithm>
 #include <fstream>
+#include <thread>
 #include "mathFcn.h"
 #include "KMP.h"
 #include "BST.h"
@@ -225,7 +226,7 @@ void testBST()
 
 void testFcnPointer()
 {
-    std::vector<int> vec = {1, 3, 5, 6, 9, 12};
+    std::vector<int> vec = {1, 3, 5, 6};
 
     ForEach(vec, PrintVal);
 
@@ -235,4 +236,30 @@ void testFcnPointer()
         std::cout << "Lambda Fcn: The value is: " << val << std::endl;
     });
 
+    int num = 5;
+    std::cout << std::endl;
+
+    ForEach2(vec, [&num](int val){
+        std::cout << "Lambda Fcn: The value is: " << val << std::endl;
+        std::cout << "Num: " << num << std::endl;
+    });
+
 }
+
+
+void testMultiThread()
+{
+    //Reference: https://www.bilibili.com/video/BV1v14y1n7Js/?p=62&spm_id_from=pageDriver&vd_source=20204ee26301990b2bd6355f7650994c
+    std::thread worker(DoWork);
+
+    std::cout << "Please input: \n";
+    std::cin.get();
+    threadTest::s_Finished = true;
+    std::cout << "s_Finished = " << threadTest::s_Finished << std::endl;
+
+    worker.join();
+    std::cout << "Finished.\n";
+    std::cout << "Started thread id = " << std::this_thread::get_id() << std::endl;
+
+    std::cin.get();
+} 

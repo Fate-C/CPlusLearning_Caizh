@@ -4,6 +4,8 @@
 #include <cmath>
 #include <typeinfo>
 #include <iostream>
+#include <functional>
+#include <thread>
 #include "mathFcn.h"
 #include "priority.h"
 
@@ -418,5 +420,28 @@ void ForEach(const std::vector<int>& values, void(*func)(int))
     for(int val : values)
     {
         func(val);
+    }
+}
+
+void ForEach2(const std::vector<int>& values, const std::function<void(int)>& func)
+{
+    for(int val : values)
+    {
+        func(val);
+    }
+}
+
+
+void DoWork()
+{
+    using namespace std::literals::chrono_literals;
+
+    std::cout << "Started thread id = " << std::this_thread::get_id() << std::endl;
+
+    while(!threadTest::s_Finished)
+    {
+        std::cout << "Working...\n";
+        std::cout << "s_Finished = " << threadTest::s_Finished << std::endl;
+        std::this_thread::sleep_for(1s);
     }
 }

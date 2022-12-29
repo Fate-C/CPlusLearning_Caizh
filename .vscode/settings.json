@@ -46,6 +46,10 @@
         "concepts": "cpp",
         "string_view": "cpp",
         "numbers": "cpp",
-        "optional": "cpp"
+        "optional": "cpp",
+        "chrono": "cpp",
+        "ctime": "cpp",
+        "ratio": "cpp",
+        "thread": "cpp"
     }
 }

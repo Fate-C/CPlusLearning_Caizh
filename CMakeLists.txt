@@ -1,16 +1,11 @@
-# TODO 1: Set the minimum required version of CMake to be 3.10
 cmake_minimum_required(VERSION 3.10)
-# TODO 2: Create a project named Tutorial
+
 project(CPlusLearning)
-# TODO 7: Set the project version number as 1.0 in the above project command
 
-# TODO 6: Set the variable CMAKE_CXX_STANDARD to 11
-#         and the variable CMAKE_CXX_STANDARD_REQUIRED to True
+find_package(Threads REQUIRED) 
 
-# TODO 8: Use configure_file to configure and copy TutorialConfig.h.in to
-#         TutorialConfig.h
 include_directories(Include)
-# TODO 3: Add an executable called Tutorial to the project
+
 add_executable(demo 
     Source/main.cpp 
     Source/LeetCodeSolution.cpp
@@ -24,9 +19,9 @@ add_executable(test
     Source/tempTest.cpp
 )
 
-# Hint: Be sure to specify the source file as tutorial.cxx
+target_link_libraries(demo
+    Threads::Threads
+)
 
-# TODO 9: Use target_include_directories to include ${PROJECT_BINARY_DIR}
-
-#set(CMAKE_BUILD_TYPE "Release")
 set(CMAKE_BUILD_TYPE "Debug")
+

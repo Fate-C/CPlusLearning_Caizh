@@ -2,6 +2,7 @@
 #include <stack>
 #include <vector>
 #include <string>
+#include <functional>
 #include "priority.h"
 
 double pow(double num, int n);
@@ -44,6 +45,13 @@ double calculate(double pOpnd1, char op, double pOpnd2);
 double evaluate(std::string::iterator &op, std::string &RPN);
 
 int maximumScore(int a, int b, int c);
-
+//测试函数指针，用lambda函数作为参数传入时，且lambda函数捕获其他变量时
 void PrintVal(int val);
 void ForEach(const std::vector<int>& values, void(*func)(int));
+void ForEach2(const std::vector<int>& values, const std::function<void(int)>& func);
+//测试多线程
+namespace threadTest {
+    static bool s_Finished = false;
+}
+void DoWork();
+

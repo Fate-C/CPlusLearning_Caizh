@@ -10,7 +10,7 @@
 int main()
 {
 
-    testFcnPointer();
+    testMultiThread();
 
     return 0;
 }
