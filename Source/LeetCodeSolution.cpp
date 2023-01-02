@@ -2,6 +2,9 @@
 #include <cstdio>
 #include <algorithm>
 #include <vector>
+#include <queue>
+#include <utility>
+#include <algorithm>
 #include "mathFcn.h"
 #include "LeetCodeSolution.h"
 
@@ -207,4 +210,76 @@ void testLeetCode()
 
     int ans = maximumScore(a, b, c);
 
+}
+
+int Solution2Q1801::getNumberOfBacklogOrders(std::vector<std::vector<int>>& orders) {
+    std::priority_queue<std::pair<int, int>, std::vector<std::pair<int, int>>, 
+        std::greater<std::pair<int, int>>> sellOrders;  //积压的销售订单，价格低的在前
+    std::priority_queue<std::pair<int, int>, std::vector<std::pair<int, int>>, 
+        std::less<std::pair<int, int>>> buyOrders;   //积压的采购订单，价格高的在前
+
+    for(auto& order : orders)
+    {
+        if(order[2] == 0)   //采购订单
+        {
+            while((!sellOrders.empty()) && order[0] >= sellOrders.top().first && order[1] > 0)
+            {
+                std::pair<int, int> currOrder = sellOrders.top();
+                sellOrders.pop();
+                int offset = std::min(currOrder.second, order[1]);
+                currOrder.second -= offset;
+                order[1] -= offset;
+                if(currOrder.second > 0)
+                {
+                    sellOrders.push(currOrder);
+                }
+            }
+            if(order[1] > 0)
+            {
+                buyOrders.push({order[0], order[1]});
+            }
+        }
+        else
+        {
+            while((!buyOrders.empty()) && order[0] <= buyOrders.top().first && order[1] > 0)
+            {
+                std::pair<int, int> currOrder = buyOrders.top();
+                buyOrders.pop();
+                int offset = std::min(currOrder.second, order[1]);
+                currOrder.second -= offset;
+                order[1] -= offset;
+                if(currOrder.second > 0)
+                {
+                    buyOrders.push(currOrder);
+                }
+            }
+            if(order[1] > 0)
+            {
+                sellOrders.push({order[0], order[1]});
+            }
+        }
+    }
+    long long cntOrders = 0;
+    while(!sellOrders.empty())
+    {
+        auto order = sellOrders.top();
+        sellOrders.pop();
+        cntOrders += order.second;
+    }
+    while(!buyOrders.empty())
+    {
+        auto order = buyOrders.top();
+        buyOrders.pop();
+        cntOrders += order.second;
+    }
+    return cntOrders % MOD;
+}
+
+void Solution2Q1801::solve()
+{
+        std::vector<std::vector<int>> orders = {{26,7,0},{16,1,1},{14,20,0},{23,15,1},{24,26,0},{19,4,1}, {1,1,0}};
+
+    int ans = getNumberOfBacklogOrders(orders);
+
+    std::cout << ans << std::endl;
 }

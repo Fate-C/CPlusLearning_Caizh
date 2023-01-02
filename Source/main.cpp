@@ -10,7 +10,7 @@
 int main()
 {
 
-    testMultiThread();
+    testTimer();
 
     return 0;
 }

@@ -76,3 +76,10 @@ private:
 
 void testLeetCode();
 
+class Solution2Q1801 {
+public:
+    int getNumberOfBacklogOrders(std::vector<std::vector<int>>& orders);
+    void solve();
+private:
+    int MOD = 1e9 + 7;
+};
