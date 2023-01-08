@@ -1,7 +1,10 @@
 #pragma once
 
 #include <string>
-
+#include <vector>
+#include <set>
+#include <queue>
+#include <utility>
 
 class Solution2Q791
 {
@@ -76,3 +79,26 @@ private:
 
 void testLeetCode();
 
+struct Comp
+{
+    bool operator()(const std::pair<int, int> &p1, const std::pair<int, int> &p2)
+    {
+        int d1 = p1.second - p1.first, d2 = p2.second - p2.first;
+        return (d1 / 2 < d2 / 2) || ((d1 / 2 == d2 / 2) && (p1.first > p2.first));
+    }
+};
+
+class Solution2Q855
+{
+public:
+    Solution2Q855(int n);
+    int seat();
+    void leave(int p);
+    void disp();
+private:
+    int n;
+    std::set<int> seats;
+    std::priority_queue<std::pair<int, int>, std::vector<std::pair<int, int>>, Comp> pq;
+};
+
+void soluQ855Test();
