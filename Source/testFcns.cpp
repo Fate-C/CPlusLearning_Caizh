@@ -6,6 +6,7 @@
 #include "mathFcn.h"
 #include "KMP.h"
 #include "BST.h"
+#include "Timer.h"
 #include "tempTest.h"
 #include "testFcns.h"
 #include "LeetCodeSolution.h"
@@ -262,4 +263,21 @@ void testMultiThread()
     std::cout << "Started thread id = " << std::this_thread::get_id() << std::endl;
 
     std::cin.get();
-} 
+}
+
+
+void testTimer()
+{
+    Timer timer;
+    auto start = std::chrono::high_resolution_clock::now();
+    for(int i = 0; i < 1000; i++)
+    {
+        std::cout << "Hello World!" << std::endl;
+    }
+    auto end = std::chrono::high_resolution_clock::now();
+
+    std::chrono::duration<float> duration = end - start;
+    
+    std::cout << duration.count() << "s" << std::endl;
+
+}
