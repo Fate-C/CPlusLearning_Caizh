@@ -32,3 +32,5 @@ void testFcnPointer();                  //用来测试函数指针
 void testMultiThread();                 //用来初步测试多线程
 
 void testTimer();                       //用来测试计时器模块
+
+void testTupleReturn();                 //用来测试元组多变量返回

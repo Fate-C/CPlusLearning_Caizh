@@ -10,7 +10,7 @@
 int main()
 {
 
-    testTimer();
+    testTupleReturn();
 
     return 0;
 }
