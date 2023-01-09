@@ -24,4 +24,4 @@ target_link_libraries(demo
 )
 
 set(CMAKE_BUILD_TYPE "Debug")
-
+set(CMAKE_CXX_STANDARD 17)

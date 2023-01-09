@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <fstream>
 #include <thread>
+#include <tuple>
 #include "mathFcn.h"
 #include "KMP.h"
 #include "BST.h"
@@ -280,4 +281,36 @@ void testTimer()
     
     std::cout << duration.count() << "s" << std::endl;
 
+}
+
+std::tuple<std::string, int, float> CreatePerson()
+{
+    std::string studentName = "Caizh";
+    int studentAge = 25;
+    float studentScore = 99.99;
+    return {studentName, studentAge, studentScore};
+}
+
+void testTupleReturn()
+{
+    //采用tuple类型，然后采用 std:get<> 方式获取 tuple 的成员，<>泛型内为成员顺序
+    auto person = CreatePerson();
+    std::string& name = std::get<0>(person);
+    int age = std::get<1>(person);
+    float score = std::get<2>(person);
+
+    std::cout << name << "\t" << age << "\t" << score << "\n";
+
+    //采用 std::tie 的方式来获取 tuple 成员
+    std::string name2;
+    int age2;
+    float score2;
+    std::tie(name2, age2, score2) = CreatePerson();
+
+    std::cout << name2 << "\t" << age2 << "\t" << score2 << "\n";
+
+    //采用结构化绑定的方式
+    auto[name3, age3, score3] = CreatePerson();
+
+    std::cout << name3 << "\t" << age3 << "\t" << score3 << "\n";
 }

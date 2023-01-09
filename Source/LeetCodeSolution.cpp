@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdio>
+#include <string>
 #include <algorithm>
 #include <vector>
 #include <queue>
@@ -209,7 +210,111 @@ void testLeetCode()
     int c = 7;
 
     int ans = maximumScore(a, b, c);
+}
 
+/*
+******************************************************************************
+******************************************************************************
+******************************************************************************
+*/
+
+Solution2Q855::Solution2Q855(int n) : n(n) {}
+
+int Solution2Q855::seat()
+{
+    if (seats.empty())
+    {
+        seats.insert(0);
+        return 0;
+    }
+    int left = *seats.begin(), right = n - 1 - *seats.rbegin();
+    while (seats.size() >= 2)
+    {
+        auto p = pq.top();
+        if (seats.count(p.first) > 0 && seats.count(p.second) > 0 &&
+            *next(seats.find(p.first)) == p.second)
+        {
+            int dis = p.second - p.first;
+            if (dis / 2 < right || dis / 2 <= left)
+            {
+                break;
+            }
+            pq.pop();
+            int nextSeat = p.first + dis / 2;
+            pq.push({p.first, nextSeat});
+            pq.push({nextSeat, p.second});
+            seats.insert(nextSeat);
+            return nextSeat;
+        }
+        pq.pop();
+    }
+    if(right > left)
+    {
+        pq.push({*seats.rbegin(), n - 1});
+        seats.insert(n - 1);
+        return n - 1;
+    }
+    else
+    {
+        pq.push({0, *seats.begin()});
+        seats.insert(0);
+        return 0;
+    }
+}
+
+void Solution2Q855::leave(int p)
+{
+    if(p != *seats.begin() && p != *seats.rbegin())
+    {
+        auto it = seats.find(p);
+        pq.push({*prev(it), *next(it)});
+    }
+    seats.erase(p);
+}
+
+void Solution2Q855::disp()
+{
+    for(int i = 0; i < n; i++)
+    {
+        std::cout << (seats.count(i)? std::to_string(i) : "*") << "\t";
+    }
+    std::cout << std::endl;
+}
+
+void soluQ855Test()
+{
+    Solution2Q855 solu(20);
+    char choice = 0;
+    while(1)
+    {
+        std::cout << "Please choose your operation(1 -> seat or 2 -> leave): ";
+        std::cin >> choice;
+        switch (choice)
+        {
+            case '1':
+            {
+                solu.seat();
+                solu.disp();
+                break;
+            }
+            case '2':
+            {
+                int num = 0;
+                std::cout << "Input the leave num: ";
+                std::cin >> num;
+                solu.leave(num);
+                solu.disp();
+                break;
+            }
+            case '3':
+            {
+                solu.disp();
+                break;
+            }
+            default:
+                break;
+        }
+    }
 }
 
 int Solution2Q1801::getNumberOfBacklogOrders(std::vector<std::vector<int>>& orders) {
