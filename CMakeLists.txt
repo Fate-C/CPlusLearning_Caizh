@@ -15,9 +15,9 @@ add_executable(demo
     Source/KMP.cpp
 )
 
-#add_executable(test
-#    Source/tempTest.cpp
-#)
+add_executable(test
+    Source/tempTest.cpp
+)
 
 target_link_libraries(demo
     Threads::Threads
