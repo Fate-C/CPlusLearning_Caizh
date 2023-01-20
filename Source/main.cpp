@@ -10,7 +10,8 @@
 int main()
 {
 
-    testTupleReturn();
+    Solution2Q1817 solu;
+    solu.solve();
 
     return 0;
 }

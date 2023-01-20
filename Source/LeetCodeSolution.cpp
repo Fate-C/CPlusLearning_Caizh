@@ -1,11 +1,14 @@
 #include <iostream>
 #include <cstdio>
-#include <string>
 #include <algorithm>
+#include <utility>
+
+#include <string>
 #include <vector>
 #include <queue>
-#include <utility>
-#include <algorithm>
+#include <unordered_map>
+#include <unordered_set>
+
 #include "mathFcn.h"
 #include "LeetCodeSolution.h"
 
@@ -387,4 +390,43 @@ void Solution2Q1801::solve()
     int ans = getNumberOfBacklogOrders(orders);
 
     std::cout << ans << std::endl;
+}
+
+/* 
+for the leetcode question 1817
+ */
+
+std::vector<int> Solution2Q1817::findingUsersActiveMinutes(std::vector<std::vector<int>>& logs, int k)
+{
+    std::unordered_map<int, std::unordered_set<int>> logsMap;
+        for(auto log : logs)
+        {
+            logsMap[log[0]].insert(log[1]);
+            // if(logsMap.count(log[0]))
+            // {
+            //     if(logsMap[log[0]].count(log[1]))
+            //     {
+            //         logsMap[log[0]].insert(log[1]);
+            //     }
+            // }
+            // else
+            // {
+            //     logsMap[log[0]].insert(log[1]);
+            // }
+        }
+        std::vector<int> ansLocate(k, 0);
+        for(auto& [key, val] : logsMap)
+        {
+            ansLocate[val.size() - 1]++;
+        }
+
+        return ansLocate;
+}
+
+void Solution2Q1817::solve()
+{
+    std::vector<std::vector<int>> logs = {{0, 5}, {1, 2}, {0, 3}, {0, 5}, {1, 3}};
+    int k = 5;
+
+    std::vector<int> ans = findingUsersActiveMinutes(logs, k);
 }
