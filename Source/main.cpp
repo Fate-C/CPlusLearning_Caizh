@@ -10,8 +10,7 @@
 int main()
 {
 
-    Solution2Q1817 solu;
-    solu.solve();
+    testStringView();
 
     return 0;
 }
