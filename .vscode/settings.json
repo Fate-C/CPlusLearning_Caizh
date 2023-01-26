@@ -51,6 +51,9 @@
         "ctime": "cpp",
         "ratio": "cpp",
         "thread": "cpp",
-        "set": "cpp"
+        "set": "cpp",
+        "semaphore": "cpp",
+        "stop_token": "cpp",
+        "variant": "cpp"
     }
 }
