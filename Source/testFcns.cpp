@@ -1,9 +1,12 @@
 #include <iostream>
+
 #include <vector>
 #include <algorithm>
 #include <fstream>
 #include <thread>
 #include <tuple>
+#include <string_view>
+
 #include "mathFcn.h"
 #include "KMP.h"
 #include "BST.h"
@@ -11,6 +14,7 @@
 #include "tempTest.h"
 #include "testFcns.h"
 #include "LeetCodeSolution.h"
+#include "tempHeader.h"
 
 //the practice is used for test the function std::generate()
 void testGenerateFcn()
@@ -313,4 +317,23 @@ void testTupleReturn()
     auto[name3, age3, score3] = CreatePerson();
 
     std::cout << name3 << "\t" << age3 << "\t" << score3 << "\n";
+}
+
+
+/* ******************************************************************************** */
+
+
+void testStringView()
+{
+    std::string name = "Cai Zhen";
+
+    std::string firstName = name.substr(0, 3);
+    std::string lastName = name.substr(4, 4);
+
+    PrintName(name);
+    PrintName(firstName);
+    PrintName(lastName);
+
+    std::cout << s_AllocCount << std::endl;
+
 }

@@ -109,3 +109,9 @@ public:
 private:
     int MOD = 1e9 + 7;
 };
+
+class Solution2Q1817 {
+public:
+    std::vector<int> findingUsersActiveMinutes(std::vector<std::vector<int>>& logs, int k);
+    void solve();
+};

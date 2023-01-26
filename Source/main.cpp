@@ -10,7 +10,7 @@
 int main()
 {
 
-    testTupleReturn();
+    testStringView();
 
     return 0;
 }
