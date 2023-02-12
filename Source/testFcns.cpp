@@ -322,18 +322,3 @@ void testTupleReturn()
 
 /* ******************************************************************************** */
 
-
-void testStringView()
-{
-    std::string name = "Cai Zhen";
-
-    std::string firstName = name.substr(0, 3);
-    std::string lastName = name.substr(4, 4);
-
-    PrintName(name);
-    PrintName(firstName);
-    PrintName(lastName);
-
-    std::cout << s_AllocCount << std::endl;
-
-}
