@@ -19,7 +19,7 @@ int main()
     sockaddr_in saddr;
     saddr.sin_family = AF_INET;         //指定协议族为 ipv4
     saddr.sin_port = htons(9999);       //绑定端口，需要把端口9999从主机字节序转换为网络字节序，且为unsigned short，所以使用htons函数
-    inet_pton(AF_INET, "172.18.54.138", &saddr.sin_addr.s_addr);
+    inet_pton(AF_INET, "172.18.49.108", &saddr.sin_addr.s_addr);
 
     int ret = connect(fd, (sockaddr*)&saddr, sizeof(saddr));
     if(ret == -1)

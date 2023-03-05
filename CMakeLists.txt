@@ -20,7 +20,7 @@ add_executable(test
 )
 
 add_executable(Server
-    Source/Socket/Server.cpp
+    Source/Socket/ServerMultiThread.cpp
 )
 add_executable(Client
     Source/Socket/Client.cpp
@@ -28,6 +28,10 @@ add_executable(Client
 
 target_link_libraries(demo
     Threads::Threads
+)
+
+target_link_libraries(Server
+    pthread
 )
 
 set(CMAKE_BUILD_TYPE "Debug")
