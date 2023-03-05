@@ -19,6 +19,13 @@ add_executable(test
     Source/tempTest.cpp
 )
 
+add_executable(Server
+    Source/Socket/Server.cpp
+)
+add_executable(Client
+    Source/Socket/Client.cpp
+)
+
 target_link_libraries(demo
     Threads::Threads
 )
