@@ -4,26 +4,26 @@ project(CPlusLearning)
 
 find_package(Threads REQUIRED) 
 
-include_directories(Include)
+include_directories(include)
 
 add_executable(demo 
-    Source/main.cpp 
-    Source/LeetCodeSolution.cpp
-    Source/mathFcn.cpp
-    Source/testFcns.cpp
-    Source/nQueen.cpp
-    Source/KMP.cpp
+    source/main.cpp 
+    source/LeetCodeSolution.cpp
+    source/mathFcn.cpp
+    source/testFcns.cpp
+    source/nQueen.cpp
+    source/KMP.cpp
 )
 
 add_executable(test
-    Source/tempTest.cpp
+    source/tempTest.cpp
 )
 
 add_executable(Server
-    Source/Socket/ServerMultiThread.cpp
+    source/socket/ServerMultiThread.cpp
 )
 add_executable(Client
-    Source/Socket/Client.cpp
+    source/socket/Client.cpp
 )
 
 target_link_libraries(demo
