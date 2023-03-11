@@ -15,10 +15,10 @@ ThreadPool* threadPoolCreate (int min, int max, int queueSize);
 void threadPoolAdd (ThreadPool* pool, void(*func)(void*), void* arg);
 
 //获取线程池中工作线程的个数
-
+int threadPoolBusyNum (ThreadPool* pool);
 
 //获取线程池中存活线程的个数
-
+int threadPoolAliveNum (ThreadPool* pool);
 
 //任务处理函数
 void* worker (void* arg);

@@ -137,6 +137,22 @@ void threadPoolAdd (ThreadPool* pool, void(*func)(void*), void* arg)
     pthread_mutex_unlock(&pool->mutexPool);
 }
 
+int threadPoolBusyNum (ThreadPool* pool)
+{
+    //在读取的时候加上互斥锁是为了防止其他线程对该内存进行读写，导致读出来的数据错误
+    pthread_mutex_lock(&pool->mutexBusy);
+    int busyNum = pool->busyNum;
+    pthread_mutex_unlock(&pool->mutexBusy);
+    return busyNum;
+}
+
+int threadPoolAliveNum (ThreadPool* pool)
+{
+    pthread_mutex_lock(&pool->mutexPool);
+    int liveNum = pool->liveNum;
+    pthread_mutex_unlock(&pool->mutexPool);
+    return liveNum;
+}
 
 void* worker(void* arg)
 {
