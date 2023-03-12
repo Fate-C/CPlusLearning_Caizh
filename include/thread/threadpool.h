@@ -9,7 +9,7 @@ typedef struct ThreadPool ThreadPool;
 ThreadPool* threadPoolCreate (int min, int max, int queueSize);
 
 //销毁线程池
-
+int threadPoolDestroy (ThreadPool* pool);
 
 //往线程池里面添加任务
 void threadPoolAdd (ThreadPool* pool, void(*func)(void*), void* arg);

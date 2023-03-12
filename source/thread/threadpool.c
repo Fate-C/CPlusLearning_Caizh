@@ -109,6 +109,44 @@ ThreadPool* threadPoolCreate (int min, int max, int queueSize)
     return NULL;
 }
 
+int threadPoolDestroy(ThreadPool *pool)
+{
+    //判断pool是否为空
+    if (pool == NULL)
+    {
+        return -1;
+    }
+
+    //关闭线程池
+    pool->shutdown = 1;
+    //阻塞管理者线程并回收
+    pthread_join(pool->managerID, NULL);
+    //唤醒阻塞的消费者线程
+    for (int i = 0; i < pool->liveNum; i++)
+    {
+        pthread_cond_signal(&pool->notEmpty);
+    }
+
+    //释放堆内存
+    if (pool->taskQ)
+    {
+        free(pool->taskQ);
+    }
+    if (pool->threadIDs)
+    {
+        free(pool->threadIDs);
+    }
+    //释放 mutex 和 cond
+    pthread_mutex_destroy(&pool->mutexPool);
+    pthread_mutex_destroy(&pool->mutexBusy);
+    pthread_cond_destroy(&pool->notEmpty);
+    pthread_cond_destroy(&pool->notFull);
+
+    free(pool);
+    pool = NULL;
+
+    return 0;
+}
 
 void threadPoolAdd (ThreadPool* pool, void(*func)(void*), void* arg)
 {
