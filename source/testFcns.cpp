@@ -314,11 +314,10 @@ void testTupleReturn()
     std::cout << name2 << "\t" << age2 << "\t" << score2 << "\n";
 
     //采用结构化绑定的方式
-    auto[name3, age3, score3] = CreatePerson();
+    //auto[name3, age3, score3] = CreatePerson();
 
-    std::cout << name3 << "\t" << age3 << "\t" << score3 << "\n";
+    //std::cout << name3 << "\t" << age3 << "\t" << score3 << "\n";
 }
 
 
 /* ******************************************************************************** */
-

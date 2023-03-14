@@ -1,5 +1,8 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 #include <pthread.h>
+#include <string.h>
 
 #include "thread/threadpool.h"
 
@@ -54,7 +57,7 @@ ThreadPool* threadPoolCreate (int min, int max, int queueSize)
         if (pool->threadIDs == NULL)
         {
             printf("Malloc threadIDs fail...\n");
-            break;;
+            break;
         }
 
         memset(pool->threadIDs, 0, sizeof(pthread_t) * max);
@@ -70,7 +73,7 @@ ThreadPool* threadPoolCreate (int min, int max, int queueSize)
             pthread_cond_init(&pool->notFull, NULL) != 0)
         {
             printf("mutex or cond initialize fail.../n");
-            break;;
+            break;
         }
 
         //任务队列
@@ -88,7 +91,7 @@ ThreadPool* threadPoolCreate (int min, int max, int queueSize)
         {
             pthread_create(&pool->threadIDs[i], NULL, worker, pool);
         }
-
+        //printf("the pool create successfully...");
         return pool;
     } while (0);
     
@@ -240,10 +243,10 @@ void* worker(void* arg)
         pthread_mutex_unlock(&pool->mutexPool);
 
         //忙的线程+1，需要互斥锁
-        printf("thread %ld start working...\n");
+        printf("thread %ld start working...\n", pthread_self());
         pthread_mutex_lock(&pool->mutexBusy);
         pool->busyNum++;
-        pthread_mutex_lock(&pool->mutexBusy);
+        pthread_mutex_unlock(&pool->mutexBusy);
 
         //调用任务函数
         task->function(task->arg);
@@ -252,10 +255,10 @@ void* worker(void* arg)
         task->arg = NULL;
 
         //忙的线程-1，需要互斥锁
-        printf("thread %ld end working...\n");
+        printf("thread %ld end working...\n", pthread_self());
         pthread_mutex_lock(&pool->mutexBusy);
         pool->busyNum--;
-        pthread_mutex_lock(&pool->mutexBusy);
+        pthread_mutex_unlock(&pool->mutexBusy);
     }
 }
 

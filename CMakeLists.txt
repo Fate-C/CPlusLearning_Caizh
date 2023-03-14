@@ -16,7 +16,7 @@ add_executable(demo
 )
 
 add_executable(test
-    source/tempTest.cpp
+    Source/tempTest.cpp
 )
 
 add_executable(Server
@@ -26,11 +26,20 @@ add_executable(Client
     source/socket/Client.cpp
 )
 
+add_executable(testThreadPool
+    source/testThreadPool.c
+    source/thread/threadpool.c
+)
+
 target_link_libraries(demo
     Threads::Threads
 )
 
 target_link_libraries(Server
+    pthread
+)
+
+target_link_libraries(testThreadPool
     pthread
 )
 
