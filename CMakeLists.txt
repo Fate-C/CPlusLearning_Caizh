@@ -15,9 +15,6 @@ add_executable(demo
     source/KMP.cpp
 )
 
-add_executable(test
-    Source/tempTest.cpp
-)
 
 add_executable(Server
     source/socket/ServerMultiThread.cpp
@@ -42,6 +39,7 @@ target_link_libraries(Server
 target_link_libraries(testThreadPool
     pthread
 )
+
 
 set(CMAKE_BUILD_TYPE "Debug")
 set(CMAKE_CXX_STANDARD 17)

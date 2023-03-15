@@ -21,13 +21,13 @@ int main ()
     printf("thread pool create successfully...\n");
     for (int i = 0; i < 100; i++)
     {
-        printf("number = %d", i);
+        printf("number = %d\n", i);
         int *num = (int*)malloc(sizeof(int));
         *num = i + 100;
         threadPoolAdd(pool, taskFcn, num);
     }
 
-    sleep(30);
+    sleep(20);
     threadPoolDestroy(pool);
 
     return 0;

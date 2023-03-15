@@ -231,11 +231,12 @@ void* worker(void* arg)
         }
 
         //从任务队列中取出一个任务
-        Task* task;
+        Task* task = (Task*)malloc(sizeof(Task));
         task->function = pool->taskQ[pool->queueFront].function;
         task->arg = pool->taskQ[pool->queueFront].arg;
         //移动头节点，维持环形队列，用数组完成循环队列
         pool->queueFront = (pool->queueFront + 1) % pool->queueCapacity;
+        pool->queueSize--;
 
         //取出任务，则队列不为满，则唤醒生产者
         pthread_cond_signal(&pool->notFull);
@@ -330,7 +331,7 @@ void threadExit(ThreadPool* pool)
         if (pool->threadIDs[i] == tid)
         {
             pool->threadIDs[i] = 0;
-            printf("threadExit() called, %ld exiting...", tid);
+            printf("threadExit() called, %ld exiting...\n", tid);
             break;
         }
     }
